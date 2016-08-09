@@ -1,0 +1,28 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /                                     controllers.UserController.login
+GET     /index                                controllers.UserController.index
+GET     /users                                controllers.UserController.getAllUsers
+GET     /authuser/:name                      controllers.UserController.show(name: String)
+GET     /signin/:name/:password              controllers.AuthController.authenticate(name: String, password: String)
+GET     /logout                               controllers.UserController.logout
+POST    /user                                 controllers.UserController.add
+PUT     /user/:id                             controllers.UserController.update(id: Int)
+DELETE  /user/:name                           controllers.UserController.delete(name: String)
+
+GET     /groupchat                           controllers.ChatController.groupchat
+GET     /privatechat                         controllers.ChatController.privatechat
+GET     /msgs                                controllers.ChatController.getMsgs
+POST    /msg                                 controllers.ChatController.createMsg
+GET     /comms                               controllers.ChatController.getCommunications
+POST    /comm                                controllers.ChatController.createCommunication
+
+GET     /tasks                               controllers.TaskController.task
+GET     /alltasks                            controllers.TaskController.getAllTasks
+POST    /task                                controllers.TaskController.addTask
+DELETE  /task/:number                        controllers.TaskController.deleteTask(number: String)
+
+
+GET /assets/*file                            controllers.Assets.versioned(path="/public", file: Asset)

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <title>Chat Widget</title>
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/angular-chart.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/privateChat.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/design.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/style1.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/reset.css")">
+
+    <script src="@routes.Assets.versioned("javascripts/jquery/jquery.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/angular/angular.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/angular-websocket/angular-websocket.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/ui-bootstrap-tpls.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/angular-resource.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/privateChat.js")" type="text/javascript"></script>
+     <script src="@routes.Assets.versioned("javascripts/private.js")" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="global-wrapper"  style="border-color: #FFFFFF">
+    <!-- nav section -->
+    <nav id="navbar-header" style="height: 70px; width: 100%;postion: absolute; margin-top: 0cm" class=" black-bg">
+        <li>
+            <!--logo start-->
+            <a href="/index"><img src="/assets/images/imbus.SVG" class="img" style="width: 100px; margin-left: 0.8cm"></a></li>
+        <ul class="nav pull-right top-menu">
+            <li><a class="logout" style=" margin-top: -0.8cm" href="/logout">Logout</a></li>
+        </ul>
+</div>
+</nav>
+
+
+<!-- sidebar section -->
+<section id="sidebar" style="height: 110%; position: absolute; margin-top: 0cm; margin-bottom: 0cm">
+    <p class="centered"><a href="/index"><img src="/assets/images/logout.PNG" class="img-circle" style="width: 60px; margin-top: 1cm; margin-left: 0.1cm; margin-bottom: 1cm"></a></p>
+    <aside>
+        <div id="sidebar"  class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+
+                <li class="sub-menu">
+                    <a href="/index" >
+                        <i class ="glyphicon glyphicon-user"></i>
+                        <span>User Management</span>
+                    </a>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="/groupchat" >
+                        <i class="glyphicon glyphicon-inbox"></i>
+                        <span>Chat</span>
+                    </a>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="/privatechat" >
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        <span>Private Chat</span>
+                    </a>
+
+                </li>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+</section>
+
+
+<!--main content start-->
+        <section  ng-app="privateApp" ng-controller="privateCtrl">
+ <div class="wrapper" style="margin-right: 2.5cm" >
+    <div class="container" id="main">
+        <div class="left">
+            <div class="top">
+                <input type="text" />
+                <a href="javascript:;" class="search"></a>
+            </div>
+            <ul class="people" >
+                <li class="person" data-chat="person1" ng-repeat="communication in communications">
+                    <img src="http://s13.postimg.org/ih41k9tqr/img1.jpg" alt="" />
+                   <span class="name">{{communication.name}}</span>
+                    <span class="time">{{communication.date | date:"MM-dd-yyyy 'at' h:mma"}}</span>
+                    <span class="preview">{{communication.message}}</span>
+                </li>
+                <li class="person" data-chat="person2">
+                    <img src="http://s3.postimg.org/yf86x7z1r/img2.jpg" alt="" />
+                    <span class="name">Dog Woofson</span>
+                    <span class="time">1:44 PM</span>
+                    <span class="preview">I've forgotten how it felt before</span>
+                </li>
+                <li class="person" data-chat="person3">
+                    <img src="http://s3.postimg.org/h9q4sm433/img3.jpg" alt="" />
+                    <span class="name">Louis CK</span>
+                    <span class="time">2:09 PM</span>
+                    <span class="preview">But we’re probably gonna need a new carpet.</span>
+                </li>
+                <li class="person" data-chat="person4">
+                    <img src="http://s3.postimg.org/quect8isv/img4.jpg" alt="" />
+                    <span class="name">Bo Jackson</span>
+                    <span class="time">2:09 PM</span>
+                    <span class="preview">It’s not that bad...</span>
+                </li>
+                <li class="person" data-chat="person5">
+                    <img src="http://s16.postimg.org/ete1l89z5/img5.jpg" alt="" />
+                    <span class="name">Michael Jordan</span>
+                    <span class="time">2:09 PM</span>
+                    <span class="preview">Wasup for the third time like is
+you bling bitch</span>
+                </li>
+                <li class="person" data-chat="person6">
+                    <img src="http://s30.postimg.org/kwi7e42rh/img6.jpg" alt="" />
+                    <span class="name">Drake</span>
+                    <span class="time">2:09 PM</span>
+                    <span class="preview">howdoyoudoaspace</span>
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="top"><span>To: <span class="name"></span></span></div>
+
+
+
+
+            <div class="chat" data-chat="person1" ng-repeat="communication in communications">
+
+                <div class="bubble you">
+                    {{communication.message}}
+                </div>
+                <div  class="bubble you" ng-hide="chatMessages.length === 0" ng-repeat="chat in chatMessages" >
+                    {{chat.text}}
+                </div>
+            </div>
+
+
+            <div class="chat" data-chat="person2">
+                <div class="conversation-start">
+                    <span>Today, 5:38 PM</span>
+                </div>
+                <div class="bubble you">
+                    Hello, can you hear me?
+                </div>
+                <div class="bubble you">
+                    I'm in California dreaming
+                </div>
+                <div class="bubble me">
+                    ... about who we used to be.
+                </div>
+                <div class="bubble me">
+                    Are you serious?
+                </div>
+                <div class="bubble you">
+                    When we were younger and free...
+                </div>
+                <div class="bubble you">
+                    I've forgotten how it felt before
+                </div>
+                <div  class="bubble you" ng-hide="chatMessages.length === 0" ng-repeat="chat in chatMessages" >
+                    {{chat.text}}
+                </div>
+            </div>
+
+
+
+            <div class="chat" data-chat="person3">
+                <div class="conversation-start">
+                    <span>Today, 3:38 AM</span>
+                </div>
+                <div class="bubble you">
+                    Hey human!
+                </div>
+                <div class="bubble you">
+                    Umm... Someone took a shit in the hallway.
+                </div>
+                <div class="bubble me">
+                    ... what.
+                </div>
+                <div class="bubble me">
+                    Are you serious?
+                </div>
+                <div class="bubble you">
+                    I mean...
+                </div>
+                <div class="bubble you">
+                    It’s not that bad...
+                </div>
+                <div class="bubble you">
+                    But we’re probably gonna need a new carpet.
+                </div>
+                <div  class="bubble you" ng-hide="chatMessages.length === 0" ng-repeat="chat in chatMessages" >
+                    {{chat.text}}
+                </div>
+            </div>
+
+
+            <div class="chat" data-chat="person4">
+                <div class="conversation-start">
+                    <span>Yesterday, 4:20 PM</span>
+                </div>
+                <div class="bubble me">
+                    Hey human!
+                </div>
+                <div class="bubble me">
+                    Umm... Someone took a shit in the hallway.
+                </div>
+                <div class="bubble you">
+                    ... what.
+                </div>
+                <div class="bubble you">
+                    Are you serious?
+                </div>
+                <div class="bubble me">
+                    I mean...
+                </div>
+                <div class="bubble me">
+                    It’s not that bad...
+                </div>
+                <div  class="bubble you" ng-hide="chatMessages.length === 0" ng-repeat="chat in chatMessages" >
+                    {{chat.text}}
+                </div>
+            </div>
+
+
+            <div class="chat" data-chat="person5">
+                <div class="conversation-start">
+                    <span>Today, 6:28 AM</span>
+                </div>
+                <div class="bubble you">
+                    Wasup
+                </div>
+                <div class="bubble you">
+                    Wasup
+                </div>
+                <div class="bubble you">
+                    Wasup for the third time like is <br />you bling bitch
+                </div>
+                <div  class="bubble you" ng-hide="chatMessages.length === 0" ng-repeat="chat in chatMessages" >
+                    {{chat.text}}
+                </div>
+            </div>
+
+
+
+            <div class="chat" data-chat="person6">
+                <div class="conversation-start">
+                    <span>Monday, 1:27 PM</span>
+                </div>
+                <div class="bubble you">
+                    So, how's your new phone?
+                </div>
+                <div class="bubble you">
+                    You finally have a smartphone :D
+                </div>
+                <div class="bubble me">
+                    Drake?
+                </div>
+                <div class="bubble me">
+                    Why aren't you answering?
+                </div>
+                <div class="bubble you">
+                    howdoyoudoaspace
+                </div>
+                <div  class="bubble you" ng-hide="chatMessages.length === 0" ng-repeat="chat in chatMessages" >
+                {{chat.text}}
+            </div>
+            </div>
+
+
+            <div class="write">
+                <input type="text" class="form-control" ng-model="newChatMsg" placeholder="..."/>
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="submit" ng-click="addChat()">Send</button>
+                    </span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <span class="credits">design: <a href="https://dribbble.com/Miksa" target="_blank">milan</a>, code: <a href="http://codepen.io/Momciloo" target="_blank">momcilo</a></span>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="@routes.Assets.versioned("javascripts/privateChat.js")" type="text/javascript"></script>
+</div>
+<script>
+    document.createElement('section');
+    document.createElement('aside');
+    document.createElement('nav');
+    document.createElement('header');
+    document.createElement('footer');
+</script>
+  </section>
+</body>
+</html>

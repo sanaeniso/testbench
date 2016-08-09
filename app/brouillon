@@ -1,0 +1,45 @@
+          <span class="title">Anonymous robot #{{ message.sender_uuid }}</span>
+            <img src="{{avatarUrl(uuid)}}">
+             <p><i class="prefix mdi-action-alarm"></i><span class="message-date">{{ message.date | date:"MM/dd/yyyy 'at' h:mma"}}</span>
+
+
+
+             <!-- nav section -->
+                 <nav id="navbar-header" style="height: 70px; width: 100%;postion: absolute; margin-top: 0cm" class=" black-bg">
+                     <li>
+                         <!--logo start-->
+                         <a href="/index"><img src="/assets/images/imbus.SVG" class="img" style="width: 100px; margin-left: 0.8cm"></a></li>
+                         <ul class="nav pull-right top-menu">
+                             <li><a class="logout" style=" margin-top: -0.8cm" href="/logout">Logout</a></li>
+                         </ul>
+                     </div>
+                 </nav>
+
+
+
+            <div class="chat" data-chat="person2">
+                <div class="conversation-start">
+                    <span>Today, 5:38 PM</span>
+                </div>
+                <div class="bubble you">
+                    Hello, can you hear me?
+                </div>
+                <div class="bubble you">
+                    I'm in California dreaming
+                </div>
+                <div class="bubble me">
+                    ... about who we used to be.
+                </div>
+                <div class="bubble me">
+                    Are you serious?
+                </div>
+                <div class="bubble you">
+                    When we were younger and free...
+                </div>
+                <div class="bubble you">
+                    I've forgotten how it felt before
+                </div>
+                <div  class="bubble you" ng-hide="chatMessages.length === 0" ng-repeat="chat in chatMessages" >
+                    {{chat.text}}
+                </div>
+            </div>

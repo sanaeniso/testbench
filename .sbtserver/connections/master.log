@@ -1,0 +1,7 @@
+New log file opened at Tue Apr 26 10:48:25 CET 2016 by 6179@pluto
+Taking next connection to: 54757
+New client attempting to connect on port: 35432-54757
+  Address = /127.0.1.1:54757
+This client on port 35432 has uuid d4f856ad-c9dd-4d31-92e0-15320e9a2cd1 configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-d4f856ad-c9dd-4d31-92e0-15320e9a2cd1
+Taking next connection to: 54757
